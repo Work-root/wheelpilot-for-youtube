@@ -1,0 +1,578 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8" />
+        <title>YouTube Speed Booster</title>
+        <link rel="stylesheet" href="popup.css" />
+    </head>
+    <body>
+        <main class="popup">
+
+            <!-- Шапка: бренд, язык, тема -->
+            <header class="pp-header">
+                <div class="brand">
+                    <img src="icon48.png" class="brand-mark" alt="" aria-hidden="true" />
+                    <span class="brand-copy">
+                        <span class="brand-name" data-i18n="title">YouTube Speed Booster</span>
+                        <span class="brand-sub" data-i18n="brandSub">Настройки воспроизведения</span>
+                    </span>
+                </div>
+
+                <div class="header-actions">
+                    <label class="language-switcher" for="languageSelect">
+                        <span class="visually-hidden" data-i18n="languageLabel">Язык</span>
+                        <select id="languageSelect" aria-label="Language">
+                            <option value="en">EN</option>
+                            <option value="ru">RU</option>
+                            <option value="es">ES</option>
+                            <option value="ko">한국어</option>
+                        </select>
+                    </label>
+
+                    <button id="themeToggleButton" class="icon-btn" type="button" data-i18n-title="themeToggleTitle" aria-label="Toggle theme">🌙</button>
+                </div>
+            </header>
+
+            <!-- Скорость — закреплена над вкладками, всегда видна -->
+            <section class="hero">
+                <div class="hero-top">
+                    <span class="eyebrow" data-i18n="speedLabel">Скорость</span>
+                    <strong id="currentSpeed" class="speed-value">1.5×</strong>
+                </div>
+
+                <input
+                    id="speedRange"
+                    class="speed-range"
+                    type="range"
+                    min="0.25"
+                    max="5"
+                    step="0.05"
+                    value="1.5"
+                    data-i18n-aria="speedRangeAria"
+                    aria-label="Speed"
+                />
+
+                <div class="range-labels" aria-hidden="true">
+                    <span id="speedRangeMinLabel">0.25×</span>
+                    <span id="speedRangeMaxLabel">5×</span>
+                </div>
+
+                <div class="presets" id="presets">
+                    <button type="button" class="preset-btn" data-i18n-title="presetTitle">0.75×</button>
+                    <button type="button" class="preset-btn" data-i18n-title="presetTitle">1.5×</button>
+                    <button type="button" class="preset-btn" data-i18n-title="presetTitle">2×</button>
+                    <button type="button" class="preset-btn" data-i18n-title="presetTitle">2.5×</button>
+                    <button type="button" class="preset-btn" data-i18n-title="presetTitle">3×</button>
+                    <button type="button" class="preset-btn" data-i18n-title="presetTitle">4×</button>
+                </div>
+
+                <div class="hero-bottom">
+                    <p id="status" class="status" data-i18n="statusDefault" role="status">
+                        Открой YouTube и выбери скорость.
+                    </p>
+                    <button
+                        id="resetButton"
+                        class="reset-link"
+                        type="button"
+                        data-i18n="resetButton"
+                        data-i18n-title="resetButtonTitle"
+                    >
+                        Сбросить на 1×
+                    </button>
+                </div>
+            </section>
+
+            <!-- Одноразовое предложение знакомства: подробный тур запускается только по явному действию. -->
+            <section id="onboardingPrompt" class="onboarding-prompt" hidden aria-labelledby="onboardingPromptTitle">
+                <div class="onboarding-prompt-copy">
+                    <span class="onboarding-prompt-kicker" data-i18n="onboardingKicker">Быстрый старт</span>
+                    <h2 id="onboardingPromptTitle" data-i18n="onboardingTitle">Познакомиться с расширением?</h2>
+                    <p data-i18n="onboardingDescription">Увидьте управление колесом над плеером и временем, приближение и кнопки.</p>
+                </div>
+                <div class="onboarding-prompt-actions">
+                    <button id="onboardingStartButton" class="onboarding-start" type="button" data-i18n="onboardingStart">Показать возможности</button>
+                    <button id="onboardingDismissButton" class="onboarding-dismiss" type="button" data-i18n="onboardingDismiss">Не сейчас</button>
+                </div>
+            </section>
+
+            <!-- Вкладки -->
+            <nav class="pp-tabs" role="tablist" aria-label="Settings sections">
+                <button id="tabBtn-player" class="pp-tab-btn" type="button" role="tab" aria-selected="true" aria-controls="tab-player" data-tab="player" data-i18n="tabPlayer">Плеер</button>
+                <button id="tabBtn-general" class="pp-tab-btn" type="button" role="tab" aria-selected="false" aria-controls="tab-general" data-tab="general" tabindex="-1" data-i18n="tabGeneral">Общее</button>
+            </nav>
+
+            <div class="pp-panels">
+
+                <!-- ================= Вкладка «Плеер» ================= -->
+                <div id="tab-player" class="pp-panel" role="tabpanel" aria-labelledby="tabBtn-player">
+
+                    <section class="group open" data-group="pbButtons">
+                        <button type="button" class="group-head" aria-expanded="true" aria-controls="grpBody-pbButtons">
+                            <span class="group-icon" aria-hidden="true">⌁</span>
+                            <span class="group-copy">
+                                <span class="group-title" data-i18n="pbButtonsTitle">Кнопки в панели плеера</span>
+                                <span class="group-desc" data-i18n="grpPbButtonsDesc">Скорость, кадры, повтор A-B, скриншот</span>
+                            </span>
+                            <span class="chevron" aria-hidden="true">⌄</span>
+                        </button>
+
+                        <div class="group-body" id="grpBody-pbButtons">
+                            <label class="row" for="playerButtonsToggle">
+                                <span class="row-label" data-i18n="pbSpeedLabel">Скорость (− N× +), колесо меняет значение</span>
+                                <input id="playerButtonsToggle" class="switch" type="checkbox" checked />
+                            </label>
+                            <label class="row" for="pbFrameButtonsToggle">
+                                <span class="row-label" data-i18n="pbFrameLabel">Покадровый шаг (◀ ▶ и большие шаги)</span>
+                                <input id="pbFrameButtonsToggle" class="switch" type="checkbox" checked />
+                            </label>
+                            <label class="row" for="pbLoopButtonsToggle">
+                                <span class="row-label" data-i18n="pbLoopLabel">Повтор отрезка A-B</span>
+                                <input id="pbLoopButtonsToggle" class="switch" type="checkbox" checked />
+                            </label>
+                            <label class="row" for="screenshotButtonToggle">
+                                <span class="row-label" data-i18n="pbScreenshotLabel">Скриншот текущего кадра</span>
+                                <input id="screenshotButtonToggle" class="switch" type="checkbox" checked />
+                            </label>
+                            <label class="row" for="videoZoomToggle">
+                                <span class="row-label" data-i18n="pbVideoZoomLabel">Приближение видео (колесо в зоне вверху по центру)</span>
+                                <input id="videoZoomToggle" class="switch" type="checkbox" />
+                            </label>
+
+                            <p id="pbButtonsStatus" class="card-status" role="status"></p>
+                        </div>
+                    </section>
+
+                    <section class="group" data-group="timeProgress">
+                        <button type="button" class="group-head" aria-expanded="false" aria-controls="grpBody-timeProgress">
+                            <span class="group-icon" aria-hidden="true">◷</span>
+                            <span class="group-copy">
+                                <span class="group-title" data-i18n="timeProgressTitle">Время и прогресс</span>
+                                <span class="group-desc" data-i18n="grpTimeProgressDesc">Остаток времени и линия прогресса</span>
+                            </span>
+                            <span class="chevron" aria-hidden="true">⌄</span>
+                        </button>
+
+                        <div class="group-body" id="grpBody-timeProgress">
+                            <label class="row" for="playerTimeLeftToggle">
+                                <span class="row-label" data-i18n="playerTimeLeftLabel">Остаток времени с учётом скорости в тайм-коде плеера</span>
+                                <input id="playerTimeLeftToggle" class="switch" type="checkbox" checked />
+                            </label>
+
+                            <div class="row row--stack">
+                                <label class="row-label" for="miniProgressMode" data-i18n="miniProgressModeLabel">Линия прогресса внизу плеера:</label>
+                                <select id="miniProgressMode" class="select">
+                                    <option value="off" data-i18n="miniProgressOff">Выключена</option>
+                                    <option value="fullscreen" data-i18n="miniProgressFullscreen">Только в полноэкранном режиме</option>
+                                    <option value="always" data-i18n="miniProgressAlways">Всегда</option>
+                                </select>
+                            </div>
+
+                            <div class="row">
+                                <label class="row-label" for="miniProgressHeight" data-i18n="miniProgressHeightLabel">Толщина линии (px):</label>
+                                <input id="miniProgressHeight" class="number" type="number" min="1" max="20" step="1" value="3" />
+                            </div>
+
+                            <div class="row row--stack">
+                                <label class="row-label" for="miniProgressColor" data-i18n="miniProgressColorLabel">Цвет линии:</label>
+                                <div class="color-row">
+                                    <input id="miniProgressColor" type="color" value="#ff0000" />
+                                    <button id="miniProgressColorReset" type="button" class="chip" data-i18n="miniProgressColorReset">Сбросить на красный YouTube</button>
+                                </div>
+                            </div>
+
+                            <p id="timeProgressStatus" class="card-status" role="status"></p>
+                        </div>
+                    </section>
+
+                    <section class="group" data-group="wheelZones">
+                        <button type="button" class="group-head" aria-expanded="false" aria-controls="grpBody-wheelZones">
+                            <span class="group-icon" aria-hidden="true">◌</span>
+                            <span class="group-copy">
+                                <span class="group-title" data-i18n="wheelZonesTitle">Колёсные зоны плеера</span>
+                                <span class="group-desc" data-i18n="grpWheelZonesDesc">Границы зон, действия жестов, направление</span>
+                            </span>
+                            <span class="chevron" aria-hidden="true">⌄</span>
+                        </button>
+
+                        <div class="group-body" id="grpBody-wheelZones">
+                            <!-- Интерактивная полоса границ: два ползунка,
+                                 боковые сегменты толще и в цвете акцента,
+                                 центральный тоньше (прокрутка страницы). -->
+                            <div class="row row--stack">
+                                <span class="row-label" data-i18n="zoneEdgesLabel">Границы зон (% ширины плеера):</span>
+                                <div class="zones-range" id="zonesRange">
+                                    <div class="zones-range-track" aria-hidden="true">
+                                        <div class="zones-range-seg zones-range-seg--side" data-seg="left"></div>
+                                        <div class="zones-range-seg zones-range-seg--mid" data-seg="mid"></div>
+                                        <div class="zones-range-seg zones-range-seg--side" data-seg="right"></div>
+                                    </div>
+                                    <input id="zoneLeftEdgeInput" type="range" min="0" max="100" step="1" value="33" data-i18n-aria="zoneLeftSlotLabel" aria-label="Левая зона" />
+                                    <input id="zoneRightEdgeInput" type="range" min="0" max="100" step="1" value="67" data-i18n-aria="zoneRightSlotLabel" aria-label="Правая зона" />
+                                </div>
+                                <div class="zones-range-footer">
+                                    <span class="zones-range-values" id="zonesRangeValues">33% / 67%</span>
+                                    <button id="zoneEdgesReset" type="button" class="chip" data-i18n="zoneEdgesReset">Сбросить</button>
+                                </div>
+                            </div>
+
+                            <fieldset class="radio-group">
+                                <legend data-i18n="wheelZonesModeLabel">Когда зоны активны:</legend>
+                                <label class="radio-item" for="wheelZonesAlways">
+                                    <input id="wheelZonesAlways" type="radio" name="wheelZonesMode" value="always" checked />
+                                    <span data-i18n="wheelZonesModeAlways">Всегда</span>
+                                </label>
+                                <label class="radio-item" for="wheelZonesFullscreen">
+                                    <input id="wheelZonesFullscreen" type="radio" name="wheelZonesMode" value="fullscreen" />
+                                    <span data-i18n="wheelZonesModeFullscreen">Только в полноэкранном режиме</span>
+                                </label>
+                                <label class="radio-item" for="wheelZonesOff">
+                                    <input id="wheelZonesOff" type="radio" name="wheelZonesMode" value="off" />
+                                    <span data-i18n="wheelZonesModeOff">Выключены</span>
+                                </label>
+                            </fieldset>
+
+                            <div class="row">
+                                <label class="row-label" for="wheelSeekStepInput" data-i18n="wheelSeekStepLabel">Шаг перемотки (секунд):</label>
+                                <input id="wheelSeekStepInput" class="number" type="number" min="1" max="60" step="1" value="5" />
+                            </div>
+
+                            <div class="row">
+                                <label class="row-label" for="wheelVolumeStepInput" data-i18n="wheelVolumeStepLabel">Шаг громкости (%):</label>
+                                <input id="wheelVolumeStepInput" class="number" type="number" min="1" max="20" step="1" value="5" />
+                            </div>
+
+                            <p id="wheelZonesStatus" class="card-status" role="status"></p>
+
+                            <!-- Четыре слота жестов: действие + инверсия
+                                 направления («наоборот»). -->
+                            <h3 class="sub-title" data-i18n="wheelSlotsTitle">Назначение жестов</h3>
+
+                            <div class="row wheel-slot">
+                                <label class="row-label" for="zoneLeftActionSelect" data-i18n="zoneLeftSlotLabel">Левая зона:</label>
+                                <select id="zoneLeftActionSelect" class="select">
+                                    <option value="seek" data-i18n="wheelActionSeek">Перемотка</option>
+                                    <option value="volume" data-i18n="wheelActionVolume">Громкость</option>
+                                    <option value="speed" data-i18n="wheelActionSpeed">Скорость</option>
+                                    <option value="off" data-i18n="wheelActionOff">Выключено</option>
+                                </select>
+                                <label class="wheel-invert" for="zoneLeftInvertToggle">
+                                    <input id="zoneLeftInvertToggle" class="switch" type="checkbox" />
+                                    <span data-i18n="wheelInvertLabel">наоборот</span>
+                                </label>
+                            </div>
+
+                            <div class="row wheel-slot">
+                                <label class="row-label" for="zoneRightActionSelect" data-i18n="zoneRightSlotLabel">Правая зона:</label>
+                                <select id="zoneRightActionSelect" class="select">
+                                    <option value="volume" data-i18n="wheelActionVolume">Громкость</option>
+                                    <option value="seek" data-i18n="wheelActionSeek">Перемотка</option>
+                                    <option value="speed" data-i18n="wheelActionSpeed">Скорость</option>
+                                    <option value="off" data-i18n="wheelActionOff">Выключено</option>
+                                </select>
+                                <label class="wheel-invert" for="zoneRightInvertToggle">
+                                    <input id="zoneRightInvertToggle" class="switch" type="checkbox" />
+                                    <span data-i18n="wheelInvertLabel">наоборот</span>
+                                </label>
+                            </div>
+
+                            <div class="row wheel-slot">
+                                <label class="row-label" for="lmbWheelActionSelect" data-i18n="lmbWheelSlotLabel">ЛКМ + колесо:</label>
+                                <select id="lmbWheelActionSelect" class="select">
+                                    <option value="speed" data-i18n="wheelActionSpeed">Скорость</option>
+                                    <option value="seek" data-i18n="wheelActionSeek">Перемотка</option>
+                                    <option value="volume" data-i18n="wheelActionVolume">Громкость</option>
+                                    <option value="off" data-i18n="wheelActionOff">Выключено</option>
+                                </select>
+                                <label class="wheel-invert" for="lmbWheelInvertToggle">
+                                    <input id="lmbWheelInvertToggle" class="switch" type="checkbox" />
+                                    <span data-i18n="wheelInvertLabel">наоборот</span>
+                                </label>
+                            </div>
+
+                            <div class="row wheel-slot">
+                                <label class="row-label" for="rmbWheelActionSelect" data-i18n="rmbWheelSlotLabel">ПКМ + колесо:</label>
+                                <select id="rmbWheelActionSelect" class="select">
+                                    <option value="off" data-i18n="wheelActionOff">Выключено</option>
+                                    <option value="speed" data-i18n="wheelActionSpeed">Скорость</option>
+                                    <option value="seek" data-i18n="wheelActionSeek">Перемотка</option>
+                                    <option value="volume" data-i18n="wheelActionVolume">Громкость</option>
+                                </select>
+                                <label class="wheel-invert" for="rmbWheelInvertToggle">
+                                    <input id="rmbWheelInvertToggle" class="switch" type="checkbox" />
+                                    <span data-i18n="wheelInvertLabel">наоборот</span>
+                                </label>
+                            </div>
+
+                            <p id="lmbWheelStatus" class="card-status" role="status"></p>
+                        </div>
+                    </section>
+
+                    <section class="group" data-group="volumeBoost">
+                        <button type="button" class="group-head" aria-expanded="false" aria-controls="grpBody-volumeBoost">
+                            <span class="group-icon" aria-hidden="true">♪</span>
+                            <span class="group-copy">
+                                <span class="group-title" data-i18n="volumeBoostTitle">Усиление звука</span>
+                                <span class="group-desc" data-i18n="grpVolumeBoostDesc">Громкость выше 100% через WebAudio</span>
+                            </span>
+                            <span class="chevron" aria-hidden="true">⌄</span>
+                        </button>
+
+                        <div class="group-body" id="grpBody-volumeBoost">
+                            <label class="row" for="volumeBoostToggle">
+                                <span class="row-label" data-i18n="volumeBoostEnableLabel">Разрешить усиление выше 100%</span>
+                                <input id="volumeBoostToggle" class="switch" type="checkbox" checked />
+                            </label>
+
+                            <div class="row">
+                                <label class="row-label" for="volumeBoostMaxInput" data-i18n="volumeBoostMaxLabel">Потолок усиления (%):</label>
+                                <input id="volumeBoostMaxInput" class="number" type="number" min="110" max="200" step="10" value="200" />
+                            </div>
+
+                            <p id="volumeBoostStatus" class="card-status" role="status"></p>
+                        </div>
+                    </section>
+
+                    <section class="group" data-group="tools">
+                        <button type="button" class="group-head" aria-expanded="false" aria-controls="grpBody-tools">
+                            <span class="group-icon" aria-hidden="true">⌥</span>
+                            <span class="group-copy">
+                                <span class="group-title" data-i18n="toolsTitle">Инструменты</span>
+                                <span class="group-desc" data-i18n="grpToolsDesc">Хоткеи кадров и повтора отрезка</span>
+                            </span>
+                            <span class="chevron" aria-hidden="true">⌄</span>
+                        </button>
+
+                        <div class="group-body" id="grpBody-tools">
+                            <label class="row" for="frameStepHotkeys">
+                                <span class="row-label" data-i18n="frameStepHotkeysLabel">Хоткеи Alt+, / Alt+. (с Shift — большой шаг)</span>
+                                <input id="frameStepHotkeys" class="switch" type="checkbox" />
+                            </label>
+
+                            <div class="row row--stack">
+                                <span class="row-label" data-i18n="frameStepLargeLabel">Размер большого шага (кадров):</span>
+                                <div class="field-pair">
+                                    <label class="field-note" for="frameStepBackInput" data-i18n="frameStepBackLabel">Назад</label>
+                                    <input id="frameStepBackInput" class="number" type="number" min="1" max="60" step="1" value="5" />
+                                    <label class="field-note" for="frameStepForwardInput" data-i18n="frameStepForwardLabel">Вперёд</label>
+                                    <input id="frameStepForwardInput" class="number" type="number" min="1" max="60" step="1" value="5" />
+                                </div>
+                            </div>
+
+                            <label class="row" for="loopHotkeys">
+                                <span class="row-label" data-i18n="loopHotkeysLabel">Хоткеи Alt+A / Alt+B / Alt+L</span>
+                                <input id="loopHotkeys" class="switch" type="checkbox" />
+                            </label>
+
+                            <p id="toolsStatus" class="card-status" role="status"></p>
+                        </div>
+                    </section>
+
+                </div>
+
+                <!-- ================= Вкладка «Общее» ================= -->
+                <div id="tab-general" class="pp-panel" role="tabpanel" aria-labelledby="tabBtn-general" hidden>
+
+                    <section class="group open" data-group="behavior">
+                        <button type="button" class="group-head" aria-expanded="true" aria-controls="grpBody-behavior">
+                            <span class="group-icon" aria-hidden="true">✓</span>
+                            <span class="group-copy">
+                                <span class="group-title" data-i18n="behaviorTitle">Поведение</span>
+                                <span class="group-desc" data-i18n="grpBehaviorDesc">Автоприменение скорости и реклама</span>
+                            </span>
+                            <span class="chevron" aria-hidden="true">⌄</span>
+                        </button>
+
+                        <div class="group-body" id="grpBody-behavior">
+                            <label class="row" for="autoApplyDefault">
+                                <span class="row-label" data-i18n="autoApplyDefault">Автоматически применять эту скорость к новым видео YouTube</span>
+                                <input id="autoApplyDefault" class="switch" type="checkbox" checked />
+                            </label>
+                            <label class="row" for="applyToAds">
+                                <span class="row-label" data-i18n="applyToAdsLabel">Ускорять также рекламу</span>
+                                <input id="applyToAds" class="switch" type="checkbox" checked />
+                            </label>
+
+                            <p id="behaviorStatus" class="card-status" role="status"></p>
+                        </div>
+                    </section>
+
+                    <section class="group" data-group="presets">
+                        <button type="button" class="group-head" aria-expanded="false" aria-controls="grpBody-presets">
+                            <span class="group-icon" aria-hidden="true">⌘</span>
+                            <span class="group-copy">
+                                <span class="group-title" data-i18n="presetsTitle">Кнопки быстрых пресетов</span>
+                                <span class="group-desc" data-i18n="grpPresetsDesc">Значения кнопок в верхнем блоке</span>
+                            </span>
+                            <span class="chevron" aria-hidden="true">⌄</span>
+                        </button>
+
+                        <div class="group-body" id="grpBody-presets">
+                            <div id="presetsGrid" class="presets-grid"></div>
+
+                            <div class="actions">
+                                <button id="resetPresetsButton" type="button" class="chip" data-i18n="resetPresetsButton">Вернуть стандартные значения</button>
+                            </div>
+
+                            <p id="presetsStatus" class="card-status" role="status"></p>
+                        </div>
+                    </section>
+
+                    <section class="group" data-group="speedRange">
+                        <button type="button" class="group-head" aria-expanded="false" aria-controls="grpBody-speedRange">
+                            <span class="group-icon" aria-hidden="true">⇔</span>
+                            <span class="group-copy">
+                                <span class="group-title" data-i18n="speedRangeTitle">Диапазон скорости</span>
+                                <span class="group-desc" data-i18n="grpSpeedRangeDesc">Границы и шаг ползунка</span>
+                            </span>
+                            <span class="chevron" aria-hidden="true">⌄</span>
+                        </button>
+
+                        <div class="group-body" id="grpBody-speedRange">
+                            <div class="speed-range-editor">
+                                <input id="speedMinInput" type="number" min="0.1" max="16" step="0.05" value="0.25" />
+                                <div id="speedRangeTrack" class="speed-range-track" tabindex="0" role="group" aria-label="Speed range">
+                                    <div id="speedRangeFill" class="speed-range-fill"></div>
+                                    <button id="speedRangeMinHandle" type="button" class="speed-range-handle speed-range-handle--min" aria-label="Minimum speed handle"></button>
+                                    <button id="speedRangeMaxHandle" type="button" class="speed-range-handle speed-range-handle--max" aria-label="Maximum speed handle"></button>
+                                </div>
+                                <input id="speedMaxInput" type="number" min="0.1" max="16" step="0.05" value="5" />
+                            </div>
+
+                            <div class="actions">
+                                <button id="resetSpeedRangeButton" type="button" class="chip" data-i18n="resetSpeedRangeButton">Вернуть стандартные значения</button>
+                            </div>
+
+                            <p id="speedRangeStatus" class="card-status" role="status"></p>
+
+                            <div class="row">
+                                <label class="row-label" for="speedStepInput" data-i18n="speedStepLabel">Шаг изменения скорости (×):</label>
+                                <input id="speedStepInput" class="number" type="number" min="0.05" max="1" step="0.05" value="0.25" />
+                            </div>
+
+                            <p id="speedStepStatus" class="card-status" role="status"></p>
+                        </div>
+                    </section>
+
+                    <section class="group" data-group="channels">
+                        <button type="button" class="group-head" aria-expanded="false" aria-controls="grpBody-channels">
+                            <span class="group-icon" aria-hidden="true">◉</span>
+                            <span class="group-copy">
+                                <span class="group-title" data-i18n="channelsTitle">Сохранённые скорости каналов</span>
+                                <span class="group-desc" data-i18n="grpChannelsDesc">Своя скорость для каждого канала</span>
+                            </span>
+                            <span class="chevron" aria-hidden="true">⌄</span>
+                        </button>
+
+                        <div class="group-body" id="grpBody-channels">
+                            <!-- Текущий канал — видна всегда, независимо от свёрнутого списка. -->
+                            <section id="channelMemory" class="channel-memory" hidden>
+                                <div class="channel-memory-row">
+                                    <span class="channel-memory-label" data-i18n="channelMemoryLabel">Текущий канал:</span>
+                                    <span id="channelMemoryName" class="channel-memory-name"></span>
+                                    <span id="channelSavedBadge" class="channel-saved-badge" hidden></span>
+                                </div>
+                                <p id="channelMemoryHint" class="channel-memory-hint" hidden data-i18n="channelMemoryNoChannel">
+                                    Открой ролик YouTube, чтобы привязать скорость к каналу.
+                                </p>
+                                <div class="channel-memory-actions">
+                                    <button id="channelSaveButton" class="channel-btn channel-btn--save" type="button">
+                                        <span data-i18n="channelSavePrefix">Сохранить</span>
+                                        <span id="channelSaveSpeed">1.5×</span>
+                                        <span data-i18n="channelSaveSuffix">для этого канала</span>
+                                    </button>
+                                    <button id="channelForgetButton" class="channel-btn channel-btn--forget" type="button" hidden data-i18n="channelForget">
+                                        Забыть скорость канала
+                                    </button>
+                                </div>
+                            </section>
+
+                            <div class="actions">
+                                <button id="channelsToggleButton" type="button" class="chip" aria-expanded="false" aria-controls="channelsListWrap" data-i18n="channelsToggle">Показать / скрыть список</button>
+                            </div>
+
+                            <div id="channelsListWrap" hidden>
+                                <div class="channels-search">
+                                    <input id="channelsSearchInput" type="search" placeholder="🔍" data-i18n-placeholder="channelsSearchPlaceholder" />
+                                </div>
+                                <div id="channelsList" class="channels-list"></div>
+                                <p id="channelsEmpty" class="muted channels-empty" hidden data-i18n="channelsEmpty">
+                                    Сохранённых каналов пока нет.
+                                </p>
+                                <div class="actions">
+                                    <button id="channelClearAllButton" class="channel-clear-all" type="button" hidden></button>
+                                </div>
+                            </div>
+
+                            <p id="channelsStatus" class="card-status" role="status"></p>
+                        </div>
+                    </section>
+
+                    <section class="group" data-group="data">
+                        <button type="button" class="group-head" aria-expanded="false" aria-controls="grpBody-data">
+                            <span class="group-icon" aria-hidden="true">↥</span>
+                            <span class="group-copy">
+                                <span class="group-title" data-i18n="dataTitle">Данные</span>
+                                <span class="group-desc" data-i18n="grpDataDesc">Экспорт и импорт настроек</span>
+                            </span>
+                            <span class="chevron" aria-hidden="true">⌄</span>
+                        </button>
+
+                        <div class="group-body" id="grpBody-data">
+                            <div class="actions">
+                                <button id="exportButton" type="button" class="chip" data-i18n="exportButton">Экспорт настроек (JSON)</button>
+                                <button id="importButton" type="button" class="chip" data-i18n="importButton">Импорт настроек…</button>
+                                <input id="importInput" type="file" accept="application/json" hidden />
+                            </div>
+
+                            <p id="dataStatus" class="card-status" role="status"></p>
+                        </div>
+                    </section>
+
+                    <section class="group group--danger" data-group="danger">
+                        <button type="button" class="group-head" aria-expanded="false" aria-controls="grpBody-danger">
+                            <span class="group-icon" aria-hidden="true">⚠</span>
+                            <span class="group-copy">
+                                <span class="group-title" data-i18n="dangerTitle">Сброс к заводским настройкам</span>
+                                <span class="group-desc" data-i18n="grpDangerDesc">Необратимый сброс всех настроек</span>
+                            </span>
+                            <span class="chevron" aria-hidden="true">⌄</span>
+                        </button>
+
+                        <div class="group-body" id="grpBody-danger">
+                            <div class="actions">
+                                <button id="factoryResetButton" type="button" class="danger" data-i18n="factoryResetButton">↺ Сбросить всё</button>
+                            </div>
+
+                            <p id="dangerStatus" class="card-status" role="status"></p>
+                        </div>
+                    </section>
+                </div>
+            </div>
+
+            <!-- Футер: поддержка слева, внешние ссылки справа -->
+            <footer class="pp-footer">
+                <button id="donateButton" class="footer-link" type="button" data-i18n="donateButton">♡ Поблагодарить в Telegram</button>
+                <span class="footer-spacer"></span>
+                <button id="onboardingButton" class="footer-link footer-link--onboarding" type="button" data-i18n="onboardingButton" data-i18n-title="onboardingButtonTitle">✦ Знакомство</button>
+                <span class="footer-spacer"></span>
+                <button id="githubButton" class="footer-link" type="button" data-i18n="githubButton">GitHub</button>
+                <button id="rateButton" class="footer-link" type="button" data-i18n="rateButton">★ Оценить</button>
+            </footer>
+
+            <!-- Кастомный confirm: очистка каналов, импорт, заводской сброс -->
+            <div id="confirmOverlay" class="confirm-overlay" hidden>
+                <div class="confirm-box" role="alertdialog" aria-modal="true" aria-labelledby="confirmText">
+                    <p id="confirmText" class="confirm-text"></p>
+                    <div class="confirm-actions">
+                        <button id="confirmCancel" type="button" class="confirm-btn confirm-btn--cancel" data-i18n="confirmCancel">Отмена</button>
+                        <button id="confirmOk" type="button" class="confirm-btn confirm-btn--ok" data-i18n="confirmOk">Да</button>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+
+        <script src="config.js"></script>
+        <script src="popup.js"></script>
+    </body>
+</html>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#090708"/><stop offset="1" stop-color="#281316"/></linearGradient>
+    <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#1d3039"/><stop offset="0.55" stop-color="#253b43"/><stop offset="1" stop-color="#6b3a29"/></linearGradient>
+    <filter id="shadow"><feDropShadow dx="0" dy="18" stdDeviation="24" flood-opacity="0.45"/></filter>
+    <filter id="glow"><feGaussianBlur stdDeviation="8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <rect width="1280" height="800" fill="url(#bg)"/>
+  <image href="../../../youtube-speed-booster/icon128.png" x="62" y="43" width="70" height="70"/>
+  <text x="151" y="76" fill="#fff" font-size="26" font-weight="700" font-family="Segoe UI, sans-serif">Скорость — прямо над всей строкой времени</text>
+  <text x="151" y="103" fill="#a99296" font-size="17" font-family="Segoe UI, sans-serif">Наведите курсор и крутите колесо: нажимать −/+ не обязательно</text>
+  <g filter="url(#shadow)">
+    <rect x="62" y="145" width="1156" height="590" rx="28" fill="#0b0a0b" stroke="#3b292c" stroke-width="2"/>
+    <rect x="85" y="168" width="1110" height="500" rx="18" fill="url(#frame)"/>
+    <circle cx="970" cy="306" r="170" fill="#ff9e4d" opacity="0.12"/>
+    <path d="M232 490 C390 312 560 592 723 400 S992 234 1134 353" fill="none" stroke="#e7f8ff" stroke-width="8" opacity="0.35"/>
+    <rect x="438" y="294" width="405" height="139" rx="24" fill="#110d0f" stroke="#ff5665" stroke-width="2"/>
+    <text x="640" y="332" text-anchor="middle" fill="#ff6c78" font-size="16" font-weight="700" font-family="Segoe UI, sans-serif">КОЛЕСО НАД ВРЕМЕНЕМ</text>
+    <text x="640" y="383" text-anchor="middle" fill="#fff" font-size="46" font-weight="800" font-family="Segoe UI, sans-serif">1.50× → 1.75×</text>
+    <text x="640" y="414" text-anchor="middle" fill="#cbb9bc" font-size="17" font-family="Segoe UI, sans-serif">работает по всей ширине таймлайна</text>
+    <rect x="85" y="594" width="1110" height="74" fill="#080708" opacity="0.9"/>
+    <path d="M110 610 H1170" stroke="#55474a" stroke-width="11" stroke-linecap="round"/>
+    <path d="M110 610 H711" stroke="#ff3348" stroke-width="11" stroke-linecap="round" filter="url(#glow)"/>
+    <circle cx="711" cy="610" r="13" fill="#fff"/>
+    <rect x="500" y="566" width="280" height="80" rx="18" fill="#1b1013" stroke="#ff4a59" stroke-width="3"/>
+    <text x="640" y="599" text-anchor="middle" fill="#ff7782" font-size="16" font-weight="700" font-family="Segoe UI, sans-serif">ЗОНА СКОРОСТИ</text>
+    <path d="M555 621 H725" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+    <path d="M573 607 L555 621 L573 635 M707 607 L725 621 L707 635" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g fill="#ddd" font-family="Segoe UI, sans-serif" font-size="17">
+      <text x="112" y="652">▶</text><text x="154" y="652">🔊</text><text x="206" y="652">7:23 / 23:06</text>
+      <text x="1025" y="652">− 1.75× +</text><text x="1140" y="652">⚙</text>
+    </g>
+  </g>
+</svg>

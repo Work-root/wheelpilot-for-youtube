@@ -1,0 +1,38 @@
+# Ручные бэкапы. Их содержимое импортировано в историю коммитов,
+# поэтому папки на диске больше не нужны — git хранит те же снимки компактнее.
+youtube-speed-booster-chat-backup-*/
+backup-youtube-speed-booster-*/
+_backups/
+
+# Архивы
+*.rar
+*.zip
+
+# Чужое расширение, скачанное для разбора функций (8.4 МБ)
+Конкурент/
+конкуренты
+
+# Черновики и скриншоты в корне проекта.
+# Иконки самого расширения лежат в youtube-speed-booster/ и версионируются.
+/*.png
+
+# Собирается скриптом: node _preview/build-preview.js
+_preview/preview.html
+
+# Локальные разрешения Claude Code — у каждой машины свои
+.claude/settings.local.json
+
+# Локальные материалы разработки — не публиковать в GitHub/Chrome Store.
+/.claude/
+/.codex/
+/*.txt
+/*.pen
+/Контекст.md
+/UX-ANALYSIS.md
+/КОНКУРЕНТ-ФИЧИ.md
+/ПЛАН-ДОРАБОТОК.md
+/планы.md
+/новый*.md
+/*-redesign.html
+/_preview/
+/youtube-speed-booster/Gemini_Generated_Image_*.png

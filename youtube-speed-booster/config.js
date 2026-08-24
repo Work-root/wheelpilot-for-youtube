@@ -5,7 +5,7 @@ window.YSB_CONFIG = {
     "https://chromewebstore.google.com/detail/mcfpmdhigeechfodngfolmfflffcimoh",
 
   // Закреплённый пост официального канала с платной реакцией Telegram Stars.
-  telegramSupportUrl: "https://t.me/YouTubeSpeedBooster/3",
+  telegramSupportUrl: "https://t.me/WheelPilotYT/5",
 
   // Исходный код, документация и список изменений проекта.
   githubUrl: "https://github.com/Work-root/wheelpilot-for-youtube",

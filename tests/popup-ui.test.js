@@ -40,7 +40,7 @@ test("rating button targets the exact Chrome Web Store item", () => {
 test("Telegram support opens the pinned channel post directly", () => {
   const config = fs.readFileSync(path.join(root, "config.js"), "utf8");
   assert.match(html, /Поблагодарить в Telegram/);
-  assert.match(config, /https:\/\/t\.me\/YouTubeSpeedBooster\/3/);
+  assert.match(config, /https:\/\/t\.me\/WheelPilotYT\/5/);
   assert.match(js, /openTelegramSupport/);
   assert.match(js, /chrome\.tabs\.create\(\{ url: TELEGRAM_SUPPORT_URL \}\)/);
   assert.doesNotMatch(js, /donate\.html|openDonatePage/);

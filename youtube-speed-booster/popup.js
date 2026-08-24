@@ -116,7 +116,7 @@ const CHROME_STORE_URL =
   "https://chromewebstore.google.com/detail/mcfpmdhigeechfodngfolmfflffcimoh";
 const TELEGRAM_SUPPORT_URL =
   (window.YSB_CONFIG && window.YSB_CONFIG.telegramSupportUrl) ||
-  "https://t.me/YouTubeSpeedBooster/3";
+  "https://t.me/WheelPilotYT/5";
 const GITHUB_URL =
   (window.YSB_CONFIG && window.YSB_CONFIG.githubUrl) ||
   "https://github.com/Work-root/wheelpilot-for-youtube";

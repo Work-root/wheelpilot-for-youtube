@@ -91,8 +91,8 @@
 
 Telegram-канал и пост поддержки созданы:
 
-- канал: https://t.me/YouTubeSpeedBooster
-- закреплённый пост поддержки: https://t.me/YouTubeSpeedBooster/3
+- канал: https://t.me/WheelPilotYT
+- закреплённый пост поддержки: https://t.me/WheelPilotYT/5
 
 Ссылка на пост подключена напрямую к кнопке «Поблагодарить в Telegram» в popup;
 промежуточная страница донатов не используется. Следующий шаг — создать

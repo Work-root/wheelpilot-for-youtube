@@ -2,7 +2,7 @@
 window.YSB_CONFIG = {
   // Полный URL карточки с постоянным ID расширения в Chrome Web Store.
   chromeStoreUrl:
-    "https://chromewebstore.google.com/detail/youtube-speed-booster/mcfpmdhigeechfodngfolmfflffcimoh",
+    "https://chromewebstore.google.com/detail/mcfpmdhigeechfodngfolmfflffcimoh",
 
   // Закреплённый пост официального канала с платной реакцией Telegram Stars.
   telegramSupportUrl: "https://t.me/YouTubeSpeedBooster/3",

@@ -1,8 +1,8 @@
 <p align="center">
-  <img src="youtube-speed-booster/icon128.png" width="128" height="128" alt="YouTube Speed Booster logo">
+  <img src="youtube-speed-booster/icon128.png" width="128" height="128" alt="WheelPilot for YouTube logo">
 </p>
 
-<h1 align="center">YouTube Speed Booster</h1>
+<h1 align="center">WheelPilot for YouTube</h1>
 
 <p align="center"><strong>Control seeking, volume, and playback speed with the mouse wheel directly over the YouTube player.</strong></p>
 
@@ -38,8 +38,10 @@ zones can be always active, limited to fullscreen, or disabled.
 
 ## Installation
 
-The Chrome Web Store release is in preparation. To install the development
-version:
+Install the public release from the
+[Chrome Web Store](https://chromewebstore.google.com/detail/mcfpmdhigeechfodngfolmfflffcimoh).
+
+To install the development version:
 
 1. Open `chrome://extensions`.
 2. Enable **Developer mode**.

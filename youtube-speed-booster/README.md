@@ -1,4 +1,4 @@
-# YouTube Speed Booster
+# WheelPilot for YouTube
 
 Исходники Chrome-расширения (Manifest V3, без сборщиков и зависимостей).
 

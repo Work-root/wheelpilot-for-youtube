@@ -1,12 +1,12 @@
-# План первой публичной публикации YouTube Speed Booster
+# План публикации WheelPilot for YouTube
 
-Текущая версия расширения: `0.2.2`.
+Текущая версия расширения: `0.2.3`.
 
 ## Правильная очередность
 
 ### 1. Зафиксировать адреса проекта
 
-1. Создать публичный Telegram-канал YouTube Speed Booster.
+1. Обновить отображаемое название Telegram-канала на WheelPilot for YouTube.
 2. Оформить аватар, краткое описание и постоянный `@username`.
 3. Опубликовать приветственный пост, краткую инструкцию и пост поддержки.
 4. Включить платные реакции у поста поддержки и закрепить его.
@@ -48,9 +48,9 @@
 
 ### 4. Опубликовать GitHub-релиз
 
-1. Обновить README и CHANGELOG для версии `0.2.2`.
+1. Обновить README и CHANGELOG для версии `0.2.3`.
 2. Закоммитить релизные изменения.
-3. Создать тег `v0.2.2` и GitHub Release.
+3. Создать тег `v0.2.3` и GitHub Release.
 4. Приложить тот же ZIP, который будет отправлен в Chrome Web Store.
 5. В релизе дать ссылку на политику конфиденциальности и Telegram-канал.
 
@@ -59,7 +59,10 @@ GitHub публикуется перед отправкой в магазин: �
 
 ### 5. Заполнить Chrome Web Store и отправить на проверку
 
-1. Категория: **Productivity / Продуктивность**.
+1. Категория: **Make Chrome yours / Functionality & UI**
+   (**Персонализируйте Chrome / Функции и интерфейс**). Это точнее отражает
+   добавляемые в YouTube жесты, зоны и элементы управления, чем общая категория
+   «Работа и планирование».
 2. Загрузить значок 128×128, минимум один скриншот 1280×800 и обязательную
    промо-плитку 440×280. Рекомендуется загрузить 3–5 скриншотов и опциональную
    плитку 1400×560.
@@ -94,7 +97,7 @@ GitHub публикуется перед отправкой в магазин: �
 
 - Ежедневно проверять отзывы магазина, GitHub Issues и комментарии Telegram.
 - Отслеживать отклонения, удаления расширения и повторяющиеся проблемы.
-- Исправлять критические ошибки отдельными патчами `0.2.1`, `0.2.2`, не меняя
+- Исправлять критические ошибки отдельными патчами, не меняя
   сразу крупные функции.
 - Через 7–14 дней попросить довольных пользователей поставить оценку, без
   награды и без блокирования интерфейса.
@@ -152,7 +155,7 @@ GitHub публикуется перед отправкой в магазин: �
 
 ## Полное описание для русской карточки
 
-> YouTube Speed Booster позволяет управлять самыми частыми действиями прямо
+> WheelPilot for YouTube позволяет управлять самыми частыми действиями прямо
 > колесом мыши над плеером. Наведите курсор на левую часть видео для перемотки,
 > на правую — для громкости, на строку времени — для изменения скорости без
 > нажатия кнопок −/+, или удерживайте левую кнопку мыши и крутите колесо.
@@ -173,6 +176,45 @@ GitHub публикуется перед отправкой в магазин: �
 > Все действия выполняются локально в браузере. Расширение не собирает
 > аналитику, историю просмотров или персональные данные, не отправляет данные
 > разработчику и не использует удалённый код.
+
+## Full description for the English listing
+
+> WheelPilot for YouTube puts fast, configurable playback controls directly
+> under your mouse pointer.
+>
+> Scroll over the left side of the player to seek, the right side to change
+> volume, or hold the left mouse button and scroll to change playback speed.
+> Scroll anywhere over YouTube's time display to change speed without clicking
+> the minus or plus buttons. You can also zoom the video with the wheel and
+> drag the enlarged frame.
+>
+> MAKE THE PLAYER YOURS
+>
+> Adjust wheel-zone boundaries, swap actions between zones, reverse directions,
+> and choose step sizes. The interactive tour highlights every active area on
+> an open YouTube video and lets you resize the zones visually.
+>
+> MORE PLAYBACK TOOLS
+>
+> • Playback speed from 0.1× to 16×
+> • Six configurable speed presets
+> • Automatic speed restore and per-channel speed memory
+> • Speed-aware remaining watch time
+> • Live-stream catch-up and live delay
+> • Frame-by-frame stepping, A–B section looping, and frame screenshots
+> • Optional volume boost, video zoom, and compact fullscreen progress line
+> • Settings export and import
+>
+> PRIVACY FIRST
+>
+> WheelPilot for YouTube works locally in your browser. It does not collect
+> analytics, browsing history, or personal data. It does not send data to the
+> developer and does not use remotely hosted code.
+>
+> Available interface languages: English, Russian, Spanish, and Korean.
+>
+> Source code and support:
+> https://github.com/Work-root/youtube-speed-booster
 
 ## Текст для проверки приватности
 
@@ -203,7 +245,7 @@ GitHub публикуется перед отправкой в магазин: �
 
 ## Пост о запуске в Telegram
 
-> **YouTube Speed Booster доступен в Chrome Web Store**
+> **WheelPilot for YouTube доступен в Chrome Web Store**
 >
 > Управляйте YouTube колесом мыши: перематывайте видео, меняйте громкость и
 > скорость, настраивайте зоны, приближайте кадр и сохраняйте скорость для

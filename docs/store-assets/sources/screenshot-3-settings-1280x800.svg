@@ -23,7 +23,7 @@
     <rect x="690" y="54" width="430" height="692" rx="28" fill="#120e0f" stroke="#4a3136" stroke-width="2"/>
     <g font-family="Segoe UI, sans-serif">
       <image href="../../../youtube-speed-booster/icon128.png" x="730" y="93" width="28" height="28"/>
-      <text x="766" y="108" fill="#fff" font-size="14" font-weight="700">YouTube Speed Booster</text>
+      <text x="766" y="108" fill="#fff" font-size="14" font-weight="700">WheelPilot for YouTube</text>
       <text x="766" y="124" fill="#a99296" font-size="10">Playback settings</text>
       <text x="730" y="176" fill="#bca9ad" font-size="12" font-weight="700">SPEED</text>
       <text x="1075" y="182" text-anchor="end" fill="#ff3b4d" font-size="30" font-weight="800">1.5×</text>

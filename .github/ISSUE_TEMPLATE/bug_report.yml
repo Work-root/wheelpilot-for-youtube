@@ -1,17 +1,17 @@
 name: Bug report
-description: Report a reproducible problem with YouTube Speed Booster
+description: Report a reproducible problem with WheelPilot for YouTube
 title: "[Bug]: "
 labels:
   - bug
 body:
   - type: markdown
     attributes:
-      value: Thanks for helping improve YouTube Speed Booster.
+      value: Thanks for helping improve WheelPilot for YouTube.
   - type: input
     id: version
     attributes:
       label: Extension version
-      placeholder: 0.2.2
+      placeholder: 0.2.3
     validations:
       required: true
   - type: dropdown

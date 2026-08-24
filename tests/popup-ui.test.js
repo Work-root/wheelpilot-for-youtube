@@ -31,10 +31,9 @@ test("GitHub footer button opens the public repository", () => {
 
 test("rating button targets the exact Chrome Web Store item", () => {
   const config = fs.readFileSync(path.join(root, "config.js"), "utf8");
-  assert.match(config, /mcfpmdhigeechfodngfolmfflffcimoh/);
-  assert.doesNotMatch(
+  assert.match(
     config,
-    /chromeStoreUrl:\s*"https:\/\/chromewebstore\.google\.com\/detail\/youtube-speed-booster"/,
+    /chromeStoreUrl:\s*\n?\s*"https:\/\/chromewebstore\.google\.com\/detail\/mcfpmdhigeechfodngfolmfflffcimoh"/,
   );
 });
 
@@ -83,6 +82,7 @@ test("settings import keeps the file input out of the popup layout", () => {
 });
 
 test("manifest metadata is localized in every supported popup language", () => {
+  assert.equal(manifest.version, "0.2.3");
   assert.equal(manifest.default_locale, "en");
   assert.equal(manifest.name, "__MSG_extensionName__");
   assert.equal(manifest.description, "__MSG_extensionDescription__");
@@ -103,5 +103,14 @@ test("manifest metadata is localized in every supported popup language", () => {
     ]) {
       assert.ok(messages[key]?.message, `${locale}.${key} is missing`);
     }
+    assert.equal(messages.extensionName.message, "WheelPilot for YouTube");
+    assert.equal(messages.actionTitle.message, "WheelPilot for YouTube");
   }
+});
+
+test("settings export uses the new brand and imports legacy backups", () => {
+  assert.match(js, /extension:\s*"WheelPilot for YouTube"/);
+  assert.match(js, /wheelpilot-settings-\$\{stamp\}\.json/);
+  assert.match(js, /"WheelPilot for YouTube"[\s\S]*"YouTube Speed Booster"/);
+  assert.match(js, /supportedExportBrands\.includes\(payload\.extension\)/);
 });

@@ -1,7 +1,7 @@
 {
-  "extensionName": { "message": "YouTube Speed Booster" },
+  "extensionName": { "message": "WheelPilot for YouTube" },
   "extensionDescription": { "message": "Control YouTube speed, seeking, volume, and zoom with the mouse wheel." },
-  "actionTitle": { "message": "YouTube Speed Booster" },
+  "actionTitle": { "message": "WheelPilot for YouTube" },
   "commandSpeedDown": { "message": "Decrease YouTube speed using the preset scale" },
   "commandResetSpeed": { "message": "Reset YouTube speed to 1x" },
   "commandSpeedUp": { "message": "Increase YouTube speed using the preset scale" },

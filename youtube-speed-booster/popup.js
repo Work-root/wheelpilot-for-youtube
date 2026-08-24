@@ -113,7 +113,7 @@ const ACTIVE_TAB_STORAGE_KEY = "ysbPopupTab"; // localStorage, не sync — с�
 // URL Chrome Web Store берётся из config.js, чтобы редактировать его в одном месте.
 const CHROME_STORE_URL =
   (window.YSB_CONFIG && window.YSB_CONFIG.chromeStoreUrl) ||
-  "https://chromewebstore.google.com/detail/youtube-speed-booster";
+  "https://chromewebstore.google.com/detail/mcfpmdhigeechfodngfolmfflffcimoh";
 const TELEGRAM_SUPPORT_URL =
   (window.YSB_CONFIG && window.YSB_CONFIG.telegramSupportUrl) ||
   "https://t.me/YouTubeSpeedBooster/3";
@@ -128,7 +128,7 @@ const GITHUB_URL =
 
 const translations = {
   ru: {
-    title: "YouTube Speed Booster",
+    title: "WheelPilot for YouTube",
     brandSub: "Настройки воспроизведения",
     languageLabel: "Язык",
     themeToggleTitle: "Переключить светлую/тёмную тему",
@@ -290,7 +290,7 @@ const translations = {
       "Сбросить все настройки к заводским?\n\nСкорость, язык и все параметры будут сброшены.",
   },
   en: {
-    title: "YouTube Speed Booster",
+    title: "WheelPilot for YouTube",
     brandSub: "Playback settings",
     languageLabel: "Language",
     themeToggleTitle: "Toggle light/dark theme",
@@ -440,7 +440,7 @@ const translations = {
     factoryResetConfirm: "Reset all settings to factory defaults?\n\nSpeed, language and all preferences will be cleared.",
   },
   es: {
-    title: "YouTube Speed Booster",
+    title: "WheelPilot for YouTube",
     brandSub: "Ajustes de reproducción",
     languageLabel: "Idioma",
     themeToggleTitle: "Cambiar tema claro/oscuro",
@@ -590,7 +590,7 @@ const translations = {
     factoryResetConfirm: "¿Restablecer toda la configuración a los valores predeterminados?\n\nLa velocidad, el idioma y todas las preferencias se borrarán.",
   },
   ko: {
-    title: "YouTube Speed Booster",
+    title: "WheelPilot for YouTube",
     brandSub: "재생 설정",
     languageLabel: "언어",
     themeToggleTitle: "라이트/다크 테마 전환",
@@ -1994,7 +1994,7 @@ if (exportButton) {
   exportButton.addEventListener("click", async () => {
     const settings = await chrome.storage.sync.get(null);
     const payload = {
-      extension: "YouTube Speed Booster",
+      extension: "WheelPilot for YouTube",
       version: 2,
       exportedAt: new Date().toISOString(),
       settings,
@@ -2005,7 +2005,7 @@ if (exportButton) {
     const a = document.createElement("a");
     const stamp = new Date().toISOString().replace(/[:T]/g, "-").slice(0, 16);
     a.href = url;
-    a.download = `youtube-speed-booster-settings-${stamp}.json`;
+    a.download = `wheelpilot-settings-${stamp}.json`;
     document.body.append(a);
     a.click();
     a.remove();
@@ -2037,7 +2037,11 @@ if (importInput) {
     // Формат v2 — { extension, settings }. Формат v1 (старый экспорт только
     // каналов) — { extension, channels } — поддерживаем как частный случай.
     let toWrite = null;
-    if (payload && payload.extension === "YouTube Speed Booster") {
+    const supportedExportBrands = [
+      "WheelPilot for YouTube",
+      "YouTube Speed Booster", // Legacy exports created before the 0.2.3 rebrand.
+    ];
+    if (payload && supportedExportBrands.includes(payload.extension)) {
       if (payload.settings && typeof payload.settings === "object") {
         toWrite = payload.settings;
       } else if (payload.channels && typeof payload.channels === "object") {

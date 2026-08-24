@@ -106,6 +106,8 @@ test("tour language is passed from popup and all tour copy is localized", () => 
     const occurrences = content.match(new RegExp(`\\b${key}:`, "g")) || [];
     assert.equal(occurrences.length, 4, `${key} must exist in RU, EN, ES, and KO`);
   }
+
+  assert.equal((content.match(/tourBrand:\s*"WheelPilot for YouTube/g) || []).length, 4);
 });
 
 test("content script exposes a guarded start message and records completion locally", () => {

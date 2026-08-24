@@ -1,8 +1,8 @@
-# Privacy Policy for YouTube Speed Booster
+# Privacy Policy for WheelPilot for YouTube
 
 Effective date: August 15, 2026
 
-YouTube Speed Booster does not collect, transmit, sell, or share personal data,
+WheelPilot for YouTube does not collect, transmit, sell, or share personal data,
 browsing history, YouTube viewing history, analytics, or advertising identifiers.
 
 The extension stores only the settings chosen by the user, such as playback
@@ -32,7 +32,7 @@ https://github.com/Work-root/youtube-speed-booster/issues
 
 Дата вступления в силу: 15 августа 2026 года.
 
-YouTube Speed Booster не собирает, не передаёт, не продаёт и не раскрывает
+WheelPilot for YouTube не собирает, не передаёт, не продаёт и не раскрывает
 персональные данные, историю браузера, историю просмотров YouTube, аналитику
 или рекламные идентификаторы.
 

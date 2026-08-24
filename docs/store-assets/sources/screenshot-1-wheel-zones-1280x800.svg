@@ -15,7 +15,7 @@
   </defs>
   <rect width="1280" height="800" fill="url(#bg)"/>
   <image href="../../../youtube-speed-booster/icon128.png" x="62" y="43" width="70" height="70"/>
-  <text x="151" y="76" fill="#fff" font-size="26" font-weight="700" font-family="Segoe UI, sans-serif">YouTube Speed Booster</text>
+  <text x="151" y="76" fill="#fff" font-size="26" font-weight="700" font-family="Segoe UI, sans-serif">WheelPilot for YouTube</text>
   <text x="151" y="103" fill="#a99296" font-size="17" font-family="Segoe UI, sans-serif">The mouse wheel controls the player right under your pointer</text>
   <g filter="url(#shadow)">
     <rect x="62" y="145" width="1156" height="590" rx="28" fill="#0b0a0b" stroke="#3b292c" stroke-width="2"/>

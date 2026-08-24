@@ -82,7 +82,7 @@ test("settings import keeps the file input out of the popup layout", () => {
 });
 
 test("manifest metadata is localized in every supported popup language", () => {
-  assert.equal(manifest.version, "0.2.3");
+  assert.equal(manifest.version, "0.2.4");
   assert.equal(manifest.default_locale, "en");
   assert.equal(manifest.name, "__MSG_extensionName__");
   assert.equal(manifest.description, "__MSG_extensionDescription__");

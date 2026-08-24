@@ -1,0 +1,9 @@
+{
+  "extensionName": { "message": "YouTube Speed Booster" },
+  "extensionDescription": { "message": "Controla la velocidad, el avance, el volumen y el zoom de YouTube con la rueda del ratón." },
+  "actionTitle": { "message": "YouTube Speed Booster" },
+  "commandSpeedDown": { "message": "Disminuir la velocidad de YouTube con la escala de preajustes" },
+  "commandResetSpeed": { "message": "Restablecer la velocidad de YouTube a 1x" },
+  "commandSpeedUp": { "message": "Aumentar la velocidad de YouTube con la escala de preajustes" },
+  "commandToggleMemorySpeed": { "message": "Cambiar YouTube entre 1x y la velocidad recordada" }
+}

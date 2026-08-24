@@ -7,6 +7,7 @@ const root = path.join(__dirname, "..", "youtube-speed-booster");
 const html = fs.readFileSync(path.join(root, "popup.html"), "utf8");
 const css = fs.readFileSync(path.join(root, "popup.css"), "utf8");
 const js = fs.readFileSync(path.join(root, "popup.js"), "utf8");
+const manifest = JSON.parse(fs.readFileSync(path.join(root, "manifest.json"), "utf8"));
 
 function rule(selector) {
   const start = css.indexOf(`${selector} {`);
@@ -26,6 +27,15 @@ test("GitHub footer button opens the public repository", () => {
   assert.match(config, /https:\/\/github\.com\/Work-root\/youtube-speed-booster/);
   assert.match(js, /openGitHubPage/);
   assert.match(js, /chrome\.tabs\.create\(\{ url: GITHUB_URL \}\)/);
+});
+
+test("rating button targets the exact Chrome Web Store item", () => {
+  const config = fs.readFileSync(path.join(root, "config.js"), "utf8");
+  assert.match(config, /mcfpmdhigeechfodngfolmfflffcimoh/);
+  assert.doesNotMatch(
+    config,
+    /chromeStoreUrl:\s*"https:\/\/chromewebstore\.google\.com\/detail\/youtube-speed-booster"/,
+  );
 });
 
 test("Telegram support opens the pinned channel post directly", () => {
@@ -70,4 +80,28 @@ test("settings import keeps the file input out of the popup layout", () => {
   assert.match(confirmHandler, /focus\(\{\s*preventScroll:\s*true\s*\}\)/);
   assert.match(confirmHandler, /requestAnimationFrame\(restorePopupViewport\)/);
   assert.ok((importHandler.match(/restorePopupViewport\(\)/g) || []).length >= 2);
+});
+
+test("manifest metadata is localized in every supported popup language", () => {
+  assert.equal(manifest.default_locale, "en");
+  assert.equal(manifest.name, "__MSG_extensionName__");
+  assert.equal(manifest.description, "__MSG_extensionDescription__");
+  assert.equal(manifest.action.default_title, "__MSG_actionTitle__");
+
+  for (const locale of ["en", "ru", "es", "ko"]) {
+    const messages = JSON.parse(
+      fs.readFileSync(path.join(root, "_locales", locale, "messages.json"), "utf8"),
+    );
+    for (const key of [
+      "extensionName",
+      "extensionDescription",
+      "actionTitle",
+      "commandSpeedDown",
+      "commandResetSpeed",
+      "commandSpeedUp",
+      "commandToggleMemorySpeed",
+    ]) {
+      assert.ok(messages[key]?.message, `${locale}.${key} is missing`);
+    }
+  }
 });

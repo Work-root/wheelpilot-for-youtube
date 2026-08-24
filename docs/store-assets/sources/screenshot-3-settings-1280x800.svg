@@ -7,25 +7,63 @@
   <rect width="1280" height="800" fill="url(#bg)"/>
   <circle cx="1140" cy="95" r="280" fill="#ff3047" opacity="0.08"/>
   <image href="../../../youtube-speed-booster/icon128.png" x="68" y="55" width="88" height="88"/>
-  <text x="68" y="210" fill="#ff6672" font-size="17" font-weight="700" letter-spacing="2" font-family="Segoe UI, sans-serif">НАСТРОЙТЕ ПОД СЕБЯ</text>
-  <text x="68" y="266" fill="#fff" font-size="48" font-weight="800" font-family="Segoe UI, sans-serif">Скорость и жесты</text>
-  <text x="68" y="320" fill="#fff" font-size="48" font-weight="800" font-family="Segoe UI, sans-serif">в одном popup</text>
-  <text x="68" y="374" fill="#bca9ad" font-size="20" font-family="Segoe UI, sans-serif">Без регистрации. Без аналитики.</text>
+  <text x="68" y="210" fill="#ff6672" font-size="17" font-weight="700" letter-spacing="2" font-family="Segoe UI, sans-serif">MAKE IT YOURS</text>
+  <text x="68" y="266" fill="#fff" font-size="48" font-weight="800" font-family="Segoe UI, sans-serif">Speed and gestures</text>
+  <text x="68" y="320" fill="#fff" font-size="48" font-weight="800" font-family="Segoe UI, sans-serif">in one popup</text>
+  <text x="68" y="374" fill="#bca9ad" font-size="20" font-family="Segoe UI, sans-serif">No account. No analytics.</text>
   <g font-family="Segoe UI, sans-serif" font-size="21">
-    <circle cx="82" cy="452" r="12" fill="#ff3b4d"/><text x="112" y="460" fill="#f4e9eb">Колёсные зоны и направления</text>
-    <circle cx="82" cy="507" r="12" fill="#ff5b48"/><text x="112" y="515" fill="#f4e9eb">Скорость 0,1×–16× и пресеты</text>
-    <circle cx="82" cy="562" r="12" fill="#ff8844"/><text x="112" y="570" fill="#f4e9eb">Приближение, кадры и повтор A–B</text>
-    <circle cx="82" cy="617" r="12" fill="#ffb442"/><text x="112" y="625" fill="#f4e9eb">Скорость отдельно для каналов</text>
+    <circle cx="82" cy="452" r="12" fill="#ff3b4d"/><text x="112" y="460" fill="#f4e9eb">Wheel zones and directions</text>
+    <circle cx="82" cy="507" r="12" fill="#ff5b48"/><text x="112" y="515" fill="#f4e9eb">Speed from 0.1× to 16×</text>
+    <circle cx="82" cy="562" r="12" fill="#ff8844"/><text x="112" y="570" fill="#f4e9eb">Zoom, frame step and A–B loop</text>
+    <circle cx="82" cy="617" r="12" fill="#ffb442"/><text x="112" y="625" fill="#f4e9eb">Per-channel speed memory</text>
   </g>
   <rect x="68" y="681" width="420" height="7" rx="3.5" fill="#33262a"/>
   <rect x="68" y="681" width="310" height="7" rx="3.5" fill="url(#accent)"/>
   <g filter="url(#shadow)">
     <rect x="690" y="54" width="430" height="692" rx="28" fill="#120e0f" stroke="#4a3136" stroke-width="2"/>
-    <image href="popup-actual.png" x="715" y="88" width="380" height="600" preserveAspectRatio="xMidYMid meet"/>
+    <g font-family="Segoe UI, sans-serif">
+      <image href="../../../youtube-speed-booster/icon128.png" x="730" y="93" width="28" height="28"/>
+      <text x="766" y="108" fill="#fff" font-size="14" font-weight="700">YouTube Speed Booster</text>
+      <text x="766" y="124" fill="#a99296" font-size="10">Playback settings</text>
+      <text x="730" y="176" fill="#bca9ad" font-size="12" font-weight="700">SPEED</text>
+      <text x="1075" y="182" text-anchor="end" fill="#ff3b4d" font-size="30" font-weight="800">1.5×</text>
+      <path d="M730 201 H1075" stroke="#e8e2e3" stroke-width="4"/><circle cx="825" cy="201" r="8" fill="#ff3b4d"/>
+      <g fill="#2a2022" font-size="12" text-anchor="middle">
+        <rect x="730" y="224" width="51" height="31" rx="9"/><text x="755" y="244" fill="#eadfe1">0.75×</text>
+        <rect x="787" y="224" width="51" height="31" rx="9"/><text x="812" y="244" fill="#eadfe1">1.5×</text>
+        <rect x="844" y="224" width="51" height="31" rx="9"/><text x="869" y="244" fill="#eadfe1">2×</text>
+        <rect x="901" y="224" width="51" height="31" rx="9"/><text x="926" y="244" fill="#eadfe1">2.5×</text>
+        <rect x="958" y="224" width="51" height="31" rx="9"/><text x="983" y="244" fill="#eadfe1">3×</text>
+        <rect x="1015" y="224" width="60" height="31" rx="9"/><text x="1045" y="244" fill="#eadfe1">4×</text>
+      </g>
+      <text x="730" y="293" fill="#eee" font-size="14" font-weight="700">Player control-bar buttons</text>
+      <text x="730" y="312" fill="#a99296" font-size="11">Speed, frames, A–B loop, screenshot</text>
+      <g fill="#d9cdcf" font-size="12">
+        <text x="730" y="350">Speed controls and wheel gesture</text>
+        <text x="730" y="398">Frame-by-frame step</text>
+        <text x="730" y="446">A–B section loop</text>
+        <text x="730" y="494">Screenshot current frame</text>
+        <text x="730" y="542">Video zoom with the mouse wheel</text>
+      </g>
+      <g>
+        <rect x="1034" y="334" width="41" height="22" rx="11" fill="#ff3b4d"/><circle cx="1064" cy="345" r="8" fill="#fff"/>
+        <rect x="1034" y="382" width="41" height="22" rx="11" fill="#ff3b4d"/><circle cx="1064" cy="393" r="8" fill="#fff"/>
+        <rect x="1034" y="430" width="41" height="22" rx="11" fill="#ff3b4d"/><circle cx="1064" cy="441" r="8" fill="#fff"/>
+        <rect x="1034" y="478" width="41" height="22" rx="11" fill="#ff3b4d"/><circle cx="1064" cy="489" r="8" fill="#fff"/>
+        <rect x="1034" y="526" width="41" height="22" rx="11" fill="#52474a"/><circle cx="1045" cy="537" r="8" fill="#b7aaad"/>
+      </g>
+      <path d="M730 571 H1075" stroke="#3f3033"/>
+      <text x="730" y="603" fill="#eee" font-size="14" font-weight="700">Time &amp; progress</text>
+      <text x="730" y="622" fill="#a99296" font-size="11">Speed-aware time and progress line</text>
+      <text x="730" y="665" fill="#a99296" font-size="10">♡ Say thanks on Telegram</text>
+      <text x="915" y="665" fill="#ff5967" font-size="10">✦ Tour</text>
+      <text x="1004" y="665" fill="#d9cdcf" font-size="10">GitHub</text>
+      <text x="1051" y="665" fill="#d9cdcf" font-size="10">★ Rate</text>
+    </g>
     <rect x="980" y="99" width="63" height="30" rx="9" fill="#1a1214" stroke="#4a383b"/>
-    <text x="993" y="119" fill="#e9dcde" font-size="12" font-family="Segoe UI, sans-serif">RU</text>
+    <text x="993" y="119" fill="#e9dcde" font-size="12" font-family="Segoe UI, sans-serif">EN</text>
     <path d="M1029 112 l4 4 4-4" fill="none" stroke="#c3b4b7" stroke-width="1.5"/>
   </g>
   <rect x="913" y="682" width="154" height="40" rx="20" fill="#ff3448"/>
-  <text x="990" y="708" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="Segoe UI, sans-serif">✦ Знакомство</text>
+  <text x="990" y="708" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="Segoe UI, sans-serif">✦ Start tour</text>
 </svg>

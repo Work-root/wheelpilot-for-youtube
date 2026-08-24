@@ -1,10 +1,8 @@
-// Глобальные внешние ссылки popup. При публикации сюда стоит подставить
-// реальный ID Chrome Web Store.
+// Глобальные внешние ссылки popup.
 window.YSB_CONFIG = {
-  // Полный URL карточки расширения в Chrome Web Store. После публикации
-  // заменить на ссылку вида:
-  //   https://chromewebstore.google.com/detail/<slug>/<extensionId>
-  chromeStoreUrl: "https://chromewebstore.google.com/detail/youtube-speed-booster",
+  // Полный URL карточки с постоянным ID расширения в Chrome Web Store.
+  chromeStoreUrl:
+    "https://chromewebstore.google.com/detail/youtube-speed-booster/mcfpmdhigeechfodngfolmfflffcimoh",
 
   // Закреплённый пост официального канала с платной реакцией Telegram Stars.
   telegramSupportUrl: "https://t.me/YouTubeSpeedBooster/3",

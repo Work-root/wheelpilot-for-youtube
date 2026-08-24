@@ -16,7 +16,7 @@
   <rect width="1280" height="800" fill="url(#bg)"/>
   <image href="../../../youtube-speed-booster/icon128.png" x="62" y="43" width="70" height="70"/>
   <text x="151" y="76" fill="#fff" font-size="26" font-weight="700" font-family="Segoe UI, sans-serif">YouTube Speed Booster</text>
-  <text x="151" y="103" fill="#a99296" font-size="17" font-family="Segoe UI, sans-serif">Колесо мыши управляет плеером там, где находится курсор</text>
+  <text x="151" y="103" fill="#a99296" font-size="17" font-family="Segoe UI, sans-serif">The mouse wheel controls the player right under your pointer</text>
   <g filter="url(#shadow)">
     <rect x="62" y="145" width="1156" height="590" rx="28" fill="#0b0a0b" stroke="#3b292c" stroke-width="2"/>
     <rect x="85" y="168" width="1110" height="500" rx="18" fill="url(#video)"/>
@@ -27,21 +27,21 @@
     <circle cx="451" cy="438" r="13" fill="#fff"/>
     <circle cx="829" cy="438" r="13" fill="#fff"/>
     <rect x="133" y="215" width="245" height="72" rx="18" fill="#071116" stroke="#56d5ff" stroke-width="2"/>
-    <text x="255" y="247" text-anchor="middle" fill="#87e3ff" font-size="19" font-weight="700" font-family="Segoe UI, sans-serif">ЛЕВАЯ ЗОНА</text>
-    <text x="255" y="273" text-anchor="middle" fill="#fff" font-size="22" font-family="Segoe UI, sans-serif">Перемотка ±5 сек.</text>
+    <text x="255" y="247" text-anchor="middle" fill="#87e3ff" font-size="19" font-weight="700" font-family="Segoe UI, sans-serif">LEFT ZONE</text>
+    <text x="255" y="273" text-anchor="middle" fill="#fff" font-size="22" font-family="Segoe UI, sans-serif">Seek ±5 sec</text>
     <rect x="518" y="215" width="245" height="72" rx="18" fill="#160b0e" stroke="#ff5867" stroke-width="2"/>
-    <text x="640" y="247" text-anchor="middle" fill="#ff8790" font-size="19" font-weight="700" font-family="Segoe UI, sans-serif">ЦЕНТР</text>
-    <text x="640" y="273" text-anchor="middle" fill="#fff" font-size="22" font-family="Segoe UI, sans-serif">ЛКМ + колесо: скорость</text>
+    <text x="640" y="247" text-anchor="middle" fill="#ff8790" font-size="19" font-weight="700" font-family="Segoe UI, sans-serif">CENTER</text>
+    <text x="640" y="273" text-anchor="middle" fill="#fff" font-size="20" font-family="Segoe UI, sans-serif">Left click + wheel: speed</text>
     <rect x="902" y="215" width="245" height="72" rx="18" fill="#171008" stroke="#ffc75b" stroke-width="2"/>
-    <text x="1024" y="247" text-anchor="middle" fill="#ffd77c" font-size="19" font-weight="700" font-family="Segoe UI, sans-serif">ПРАВАЯ ЗОНА</text>
-    <text x="1024" y="273" text-anchor="middle" fill="#fff" font-size="22" font-family="Segoe UI, sans-serif">Громкость ±5%</text>
+    <text x="1024" y="247" text-anchor="middle" fill="#ffd77c" font-size="19" font-weight="700" font-family="Segoe UI, sans-serif">RIGHT ZONE</text>
+    <text x="1024" y="273" text-anchor="middle" fill="#fff" font-size="22" font-family="Segoe UI, sans-serif">Volume ±5%</text>
     <rect x="467" y="344" width="346" height="175" rx="24" fill="#120e10" stroke="#5b3c41" stroke-width="2"/>
-    <text x="500" y="381" fill="#ff5967" font-size="15" font-weight="700" font-family="Segoe UI, sans-serif">ЗНАКОМСТВО · ШАГ 1 ИЗ 6</text>
-    <text x="500" y="419" fill="#fff" font-size="26" font-weight="700" font-family="Segoe UI, sans-serif">Три активные области</text>
-    <text x="500" y="452" fill="#cdbdc0" font-size="18" font-family="Segoe UI, sans-serif">Тяните белые границы по горизонтали —</text>
-    <text x="500" y="478" fill="#cdbdc0" font-size="18" font-family="Segoe UI, sans-serif">новые размеры сразу сохраняются.</text>
+    <text x="500" y="381" fill="#ff5967" font-size="15" font-weight="700" font-family="Segoe UI, sans-serif">TOUR · STEP 1 OF 6</text>
+    <text x="500" y="419" fill="#fff" font-size="26" font-weight="700" font-family="Segoe UI, sans-serif">Three active zones</text>
+    <text x="500" y="452" fill="#cdbdc0" font-size="18" font-family="Segoe UI, sans-serif">Drag the white boundaries horizontally —</text>
+    <text x="500" y="478" fill="#cdbdc0" font-size="18" font-family="Segoe UI, sans-serif">your new zone sizes are saved instantly.</text>
     <rect x="687" y="486" width="94" height="38" rx="19" fill="#ff3448"/>
-    <text x="734" y="511" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="Segoe UI, sans-serif">Далее</text>
+    <text x="734" y="511" text-anchor="middle" fill="#fff" font-size="16" font-weight="700" font-family="Segoe UI, sans-serif">Next</text>
     <path d="M104 699 H1176" stroke="#392a2c" stroke-width="8" stroke-linecap="round"/>
     <path d="M104 699 H821" stroke="#ff3349" stroke-width="8" stroke-linecap="round"/>
     <circle cx="821" cy="699" r="10" fill="#fff"/>

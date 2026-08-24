@@ -1,0 +1,9 @@
+{
+  "extensionName": { "message": "YouTube Speed Booster" },
+  "extensionDescription": { "message": "마우스 휠로 YouTube 재생 속도, 탐색, 음량, 확대/축소를 제어하세요." },
+  "actionTitle": { "message": "YouTube Speed Booster" },
+  "commandSpeedDown": { "message": "프리셋 단계에 따라 YouTube 속도 낮추기" },
+  "commandResetSpeed": { "message": "YouTube 속도를 1x로 초기화" },
+  "commandSpeedUp": { "message": "프리셋 단계에 따라 YouTube 속도 높이기" },
+  "commandToggleMemorySpeed": { "message": "YouTube 속도를 1x와 기억된 속도 사이에서 전환" }
+}

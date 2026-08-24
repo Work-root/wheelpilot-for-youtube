@@ -1,0 +1,56 @@
+name: Bug report
+description: Report a reproducible problem with YouTube Speed Booster
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for helping improve YouTube Speed Booster.
+  - type: input
+    id: version
+    attributes:
+      label: Extension version
+      placeholder: 0.2.2
+    validations:
+      required: true
+  - type: dropdown
+    id: installation
+    attributes:
+      label: Installation source
+      options:
+        - Chrome Web Store
+        - Unpacked development version
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the problem and what you expected instead.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open a YouTube video
+        2. Move the pointer to...
+        3. Use the mouse wheel...
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Chrome version, operating system, video type, and relevant settings.
+    validations:
+      required: true
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy check
+      options:
+        - label: I removed personal data, private links, and sensitive screenshots.
+          required: true

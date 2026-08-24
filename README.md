@@ -81,6 +81,8 @@ The extension:
 Project documents:
 
 - [Privacy policy](PRIVACY.md)
+- [Changelog](CHANGELOG.md)
+- [MIT license](LICENSE)
 - [Release recommendations](docs/release-recommendations.md)
 - [Publication plan and Chrome Web Store copy](docs/publication-plan.md)
 - [Telegram support research](docs/telegram-support.md)
@@ -119,5 +121,5 @@ youtube-speed-booster/
 - Build the upload archive from tracked extension files only:
 
 ```powershell
-git archive --format=zip --output youtube-speed-booster.zip HEAD:youtube-speed-booster
+pwsh -File scripts/build-release.ps1
 ```

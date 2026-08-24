@@ -26,7 +26,7 @@ policies.
 Questions and privacy requests can be submitted through the project's public
 issue tracker:
 
-https://github.com/Work-root/youtube-speed-booster/issues
+https://github.com/Work-root/wheelpilot-for-youtube/issues
 
 ## Политика конфиденциальности
 
@@ -55,4 +55,4 @@ WheelPilot for YouTube не собирает, не передаёт, не про
 
 Вопросы о конфиденциальности можно отправить через публичный трекер проекта:
 
-https://github.com/Work-root/youtube-speed-booster/issues
+https://github.com/Work-root/wheelpilot-for-youtube/issues

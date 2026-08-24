@@ -27,5 +27,5 @@ All notable changes to WheelPilot for YouTube are documented here.
 - Completed live-stream recordings use the normal elapsed, duration, and
   speed-adjusted remaining-time display.
 
-[0.2.2]: https://github.com/Work-root/youtube-speed-booster/releases/tag/v0.2.2
-[0.2.3]: https://github.com/Work-root/youtube-speed-booster/releases/tag/v0.2.3
+[0.2.2]: https://github.com/Work-root/wheelpilot-for-youtube/releases/tag/v0.2.2
+[0.2.3]: https://github.com/Work-root/wheelpilot-for-youtube/releases/tag/v0.2.3

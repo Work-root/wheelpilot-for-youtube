@@ -119,7 +119,7 @@ const TELEGRAM_SUPPORT_URL =
   "https://t.me/YouTubeSpeedBooster/3";
 const GITHUB_URL =
   (window.YSB_CONFIG && window.YSB_CONFIG.githubUrl) ||
-  "https://github.com/Work-root/youtube-speed-booster";
+  "https://github.com/Work-root/wheelpilot-for-youtube";
 
 // --- Локализация -------------------------------------------------------------
 // Единый словарь для всего popup. Между старыми popup.js/options.js была

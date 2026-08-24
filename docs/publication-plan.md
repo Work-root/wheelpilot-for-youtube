@@ -214,7 +214,7 @@ GitHub публикуется перед отправкой в магазин: �
 > Available interface languages: English, Russian, Spanish, and Korean.
 >
 > Source code and support:
-> https://github.com/Work-root/youtube-speed-booster
+> https://github.com/Work-root/wheelpilot-for-youtube
 
 ## Текст для проверки приватности
 
@@ -253,7 +253,7 @@ GitHub публикуется перед отправкой в магазин: �
 >
 > Установить: `<CHROME_WEB_STORE_URL>`
 >
-> Исходный код и инструкции: https://github.com/Work-root/youtube-speed-booster
+> Исходный код и инструкции: https://github.com/Work-root/wheelpilot-for-youtube
 >
 > В расширении есть кнопка «Знакомство» — она покажет все активные зоны прямо
 > на открытом видео.

@@ -8,5 +8,5 @@ window.YSB_CONFIG = {
   telegramSupportUrl: "https://t.me/YouTubeSpeedBooster/3",
 
   // Исходный код, документация и список изменений проекта.
-  githubUrl: "https://github.com/Work-root/youtube-speed-booster",
+  githubUrl: "https://github.com/Work-root/wheelpilot-for-youtube",
 };

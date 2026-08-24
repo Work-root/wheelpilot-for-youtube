@@ -24,7 +24,7 @@ test("footer keeps support left and GitHub immediately before rating", () => {
 
 test("GitHub footer button opens the public repository", () => {
   const config = fs.readFileSync(path.join(root, "config.js"), "utf8");
-  assert.match(config, /https:\/\/github\.com\/Work-root\/youtube-speed-booster/);
+  assert.match(config, /https:\/\/github\.com\/Work-root\/wheelpilot-for-youtube/);
   assert.match(js, /openGitHubPage/);
   assert.match(js, /chrome\.tabs\.create\(\{ url: GITHUB_URL \}\)/);
 });

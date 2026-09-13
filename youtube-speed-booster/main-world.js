@@ -21,6 +21,7 @@
 
   const CMD_EVENT = "ysb-player-cmd";
   const STATE_EVENT = "ysb-player-state";
+  const VOLUME_STATE_EVENT = "ysb-player-volume-state";
 
   function getPlayer() {
     const el = document.getElementById("movie_player");
@@ -108,6 +109,17 @@
     );
   }
 
+  function reportVolumeState(player) {
+    if (typeof player.getVolume !== "function") return;
+    const volume = clampVolume(player.getVolume());
+    if (volume == null) return;
+    const muted =
+      typeof player.isMuted === "function" ? Boolean(player.isMuted()) : false;
+    document.dispatchEvent(
+      new CustomEvent(VOLUME_STATE_EVENT, { detail: { volume, muted } }),
+    );
+  }
+
   document.addEventListener(CMD_EVENT, (event) => {
     const detail = event && event.detail ? event.detail : null;
     if (!detail || typeof detail.cmd !== "string") return;
@@ -119,6 +131,10 @@
       switch (detail.cmd) {
         case "getPlayerState": {
           reportPlayerState(player);
+          break;
+        }
+        case "getVolume": {
+          reportVolumeState(player);
           break;
         }
         case "setVolume": {

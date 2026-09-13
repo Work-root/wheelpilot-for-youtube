@@ -13,7 +13,7 @@ class FakeCustomEvent {
   }
 }
 
-function createDocument(player = null) {
+function createDocument(player = null, video = null) {
   const listeners = new Map();
   return {
     addEventListener(type, listener) {
@@ -28,11 +28,61 @@ function createDocument(player = null) {
     getElementById(id) {
       return id === "movie_player" ? player : null;
     },
-    querySelector() {
-      return null;
+    querySelector(selector) {
+      return selector === "video.html5-main-video" || selector === "video"
+        ? video
+        : null;
     },
   };
 }
+
+test("volume wheel uses YouTube's percent scale without rewriting video.volume", () => {
+  let playerVolume = 100;
+  const player = {
+    getVolume: () => playerVolume,
+    setVolume: (value) => { playerVolume = value; },
+    isMuted: () => false,
+  };
+  const video = { volume: 0.0256, muted: false };
+  const document = createDocument(player, video);
+  const context = vm.createContext({
+    chrome: {
+      runtime: { onMessage: { addListener() {} } },
+      storage: {
+        onChanged: { addListener() {} },
+        sync: { get: () => ({ then() {} }), set() {} },
+      },
+    },
+    console,
+    CustomEvent: FakeCustomEvent,
+    document,
+    isFinite,
+    location: { pathname: "/watch" },
+    MutationObserver: class {},
+    URL,
+    window: {},
+  });
+  vm.runInContext(
+    fs.readFileSync(path.join(root, "youtube-speed-booster", "main-world.js"), "utf8"),
+    context,
+    { filename: "main-world.js" },
+  );
+  vm.runInContext(
+    fs.readFileSync(path.join(root, "youtube-speed-booster", "content.js"), "utf8"),
+    context,
+    { filename: "content.js" },
+  );
+
+  vm.runInContext(`
+    globalThis.beforeWheel = getNativeVolumePct();
+    globalThis.afterWheel = setNativeVolumePct(95);
+  `, context);
+
+  assert.equal(context.beforeWheel, 100);
+  assert.equal(context.afterWheel, 95);
+  assert.equal(playerVolume, 95);
+  assert.equal(video.volume, 0.0256);
+});
 
 function loadContentContext() {
   const document = createDocument();

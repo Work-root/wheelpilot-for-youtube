@@ -2,6 +2,14 @@
 
 All notable changes to WheelPilot for YouTube are documented here.
 
+## [0.2.5] - 2026-09-13
+
+### Fixed
+
+- Fixed mouse-wheel volume control dropping from 100% to 0% and becoming
+  limited to about 16%. Wheel adjustments now use YouTube's player volume
+  scale directly and stay synchronized with the native volume slider.
+
 ## [0.2.4] - 2026-08-24
 
 ### Changed
@@ -36,3 +44,4 @@ All notable changes to WheelPilot for YouTube are documented here.
 [0.2.2]: https://github.com/Work-root/wheelpilot-for-youtube/releases/tag/v0.2.2
 [0.2.3]: https://github.com/Work-root/wheelpilot-for-youtube/releases/tag/v0.2.3
 [0.2.4]: https://github.com/Work-root/wheelpilot-for-youtube/releases/tag/v0.2.4
+[0.2.5]: https://github.com/Work-root/wheelpilot-for-youtube/releases/tag/v0.2.5

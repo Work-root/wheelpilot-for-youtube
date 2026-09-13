@@ -114,6 +114,7 @@ const TIME_LEFT_CLASS = "ysb-time-left";
 const LIVE_DELAY_CLASS = "ysb-live-delay";
 const PLAYER_CMD_EVENT = "ysb-player-cmd";
 const PLAYER_STATE_EVENT = "ysb-player-state";
+const PLAYER_VOLUME_STATE_EVENT = "ysb-player-volume-state";
 const LIVE_HEAD_CONFIRM_MS = 500;
 const SUPPORTED_LANGUAGES = ["ru", "en", "es", "ko"];
 const SPEED_STEPS = [
@@ -539,6 +540,7 @@ let videoCheckTimer = null;
 let lastAppliedSpeed = null;
 let adObserver = null;
 let mainWorldPlayerState = null;
+let mainWorldVolumeState = null;
 let liveHeadDetectedAt = 0;
 let liveHeadVideo = null;
 
@@ -748,6 +750,31 @@ function requestMainWorldPlayerState() {
     return null;
   }
   return mainWorldPlayerState;
+}
+
+// Громкость YouTube нельзя надёжно выводить из video.volume: плеер может
+// применять к media-элементу собственную (нелинейную) шкалу. Читаем процент
+// синхронно из API #movie_player в MAIN-world.
+document.addEventListener(PLAYER_VOLUME_STATE_EVENT, (event) => {
+  const detail = event && event.detail;
+  const volume = detail ? Number(detail.volume) : NaN;
+  if (!Number.isFinite(volume) || typeof detail.muted !== "boolean") return;
+  mainWorldVolumeState = {
+    volume: Math.min(100, Math.max(0, Math.round(volume))),
+    muted: detail.muted,
+  };
+});
+
+function requestMainWorldVolumeState() {
+  mainWorldVolumeState = null;
+  try {
+    document.dispatchEvent(
+      new CustomEvent(PLAYER_CMD_EVENT, { detail: { cmd: "getVolume" } }),
+    );
+  } catch {
+    return null;
+  }
+  return mainWorldVolumeState;
 }
 
 // Достаёт ссылку на канал из DOM. YouTube переименовывает классы, поэтому
@@ -1702,6 +1729,10 @@ function sendPlayerCommand(cmd, value) {
 }
 
 function getNativeVolumePct() {
+  const playerState = requestMainWorldVolumeState();
+  if (playerState) return playerState.muted ? 0 : playerState.volume;
+
+  // Резерв для момента, когда YouTube API ещё не успел инициализироваться.
   const video = findVideo();
   if (!video) return 0;
   if (video.muted) return 0;
@@ -1712,7 +1743,14 @@ function setNativeVolumePct(pct) {
   const video = findVideo();
   const v = Math.min(100, Math.max(0, Math.round(pct)));
 
-  if (video) {
+  const playerState = requestMainWorldVolumeState();
+  if (playerState) {
+    // Основной путь: только API YouTube. Одновременная запись в video.volume
+    // приводила к двойному нелинейному пересчёту и потолку около 16%.
+    sendPlayerCommand("setVolume", v);
+  } else if (video) {
+    // API может быть недоступен в первые мгновения загрузки — тогда меняем
+    // media-элемент напрямую как временный fallback.
     try {
       if (v > 0 && video.muted) video.muted = false;
       video.volume = v / 100;
@@ -1720,7 +1758,6 @@ function setNativeVolumePct(pct) {
       /* ignore */
     }
   }
-  sendPlayerCommand("setVolume", v);
   return v;
 }
 
